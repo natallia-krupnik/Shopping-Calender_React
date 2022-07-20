@@ -57,7 +57,7 @@ const CostForm = () => {
 				<div className="new-cost__control">
 					<label>Name</label>
 					<input 
-						value={nameInput}
+						// value={nameInput}
 						onChange={nameInputChangeHandler} 
 						type="text"/>
 				</div>
