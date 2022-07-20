@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./CostForm.css"
 
-const CostForm = () => {
+const CostForm = (props) => {
 
 	const [nameInput, setNameInput] = useState("");
 	const [sumInput, setSumInput] = useState("");
-	const[dateInput, setDateInput] = useState("")
+	const [dateInput, setDateInput] = useState("")
 
 	// const [userInput, setUserInput] = useState({
 	// 	nameInput: "",
@@ -46,6 +46,8 @@ const CostForm = () => {
 			sum: sumInput,
 			date: new Date (dateInput)
 		}
+		props.onSaveCostData(costData)
+
 		setNameInput("")
 		setSumInput("")
 		setDateInput("")
@@ -54,10 +56,11 @@ const CostForm = () => {
 	return (
 		<form onSubmit={submitHandler}>
 			<div className="new-cost__controls">
+
 				<div className="new-cost__control">
 					<label>Name</label>
 					<input 
-						// value={nameInput}
+						value={nameInput}
 						onChange={nameInputChangeHandler} 
 						type="text"/>
 				</div>
@@ -77,12 +80,14 @@ const CostForm = () => {
 						onChange={dateInputChangeHandler} 
 						type="date" min="2019-01-01" step="2023-12-31"/>
 				</div>
+
 				<div className="new-cost__actions">
 					<button type="submit">Add cost</button>
 				</div>
+
 			</div>
 		</form>
-		
+
 	);
 }
 
