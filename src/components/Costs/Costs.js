@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import CostFilter from "./CostFilter";
-import CostItem from "./CostItem";
+import CostList from "./CostList";
 import "./Costs.css"
 
 const Costs =(props)=>{
@@ -18,18 +18,6 @@ const Costs =(props)=>{
 		)
 	})
 
-	let constContent = <p>You don't have any shopping this year</p>
-	if (filteredCosts.length >0){
-		constContent = filteredCosts.map ((itemCost) => (
-			<CostItem 
-				key={itemCost.id}
-				date={itemCost.date} 
-				description={itemCost.description} 
-				amount={itemCost.amount}
-			/>
-		))
-	}
-
 	return(
 		<div> 
 			<Card className="costs">
@@ -38,32 +26,7 @@ const Costs =(props)=>{
 									//year- es soll 2021 stehen, wie bei useState 
 									//kehr zu CostFilter "Select" zurück und füge "value" zu
 							onYearChangeHandler={yearChangeHandler}/>
-
-								{/*1 Option short*/}
-				{constContent}
-
-								{/*2 Option &&*/}
-				{/* {filteredCosts.length === 0 && <p>You don't have any shopping this year</p>}
-				{filteredCosts.length !== 0 && filteredCosts.map ((itemCost) => (
-								<CostItem 
-									key={itemCost.id}
-									date={itemCost.date} 
-									description={itemCost.description} 
-									amount={itemCost.amount}
-								/>
-				))} */}
-
-									{/*3 Option ternary Operator*/}
-				{/* {filteredCosts.length === 0 
-						? <p>You don't have any shopping</p>
-						: filteredCosts.map((itemCost) => (
-								<CostItem 
-									key={itemCost.id}
-									date={itemCost.date} 
-									description={itemCost.description} 
-									amount={itemCost.amount}
-					/>
-					))}	 */}
+				<CostList costs={filteredCosts}/>
 			</Card>
 		</div>
 	)
