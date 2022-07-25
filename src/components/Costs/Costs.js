@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import CostFilter from "./CostFilter";
 import CostList from "./CostList";
 import "./Costs.css"
+import CostsDisagram from "./CostsDiagram";
 
 const Costs =(props)=>{
 
@@ -26,6 +27,7 @@ const Costs =(props)=>{
 									//year- es soll 2021 stehen, wie bei useState 
 									//kehr zu CostFilter "Select" zurück und füge "value" zu
 							onYearChangeHandler={yearChangeHandler}/>
+				<CostsDisagram costs={filteredCosts}/>							
 				<CostList costs={filteredCosts}/>
 			</Card>
 		</div>
